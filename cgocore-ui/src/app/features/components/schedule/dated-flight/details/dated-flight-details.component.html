@@ -1,0 +1,90 @@
+<!-- -->
+<!-- auto generated details component html file -->
+<!-- write modifications between specific code marks -->
+<!-- processed by skeleton generator -->
+<!-- -->
+
+<app-dated-flight-menu  #menu [activePath]="activePath" [id]="id"></app-dated-flight-menu>
+
+<h2>
+Dated Flight
+</h2>
+
+<div class="details-form" >
+<form [formGroup]="form" (ngSubmit)="update()">
+<p>
+<mat-form-field appearance="outline" floatLabel="always" class="autocomplete">
+<mat-label>Company</mat-label>
+<input matInput placeholder="Company" formControlName="companyIataCode" [matAutocomplete]="companyIataCodeAutoComplete"/>
+<mat-autocomplete #companyIataCodeAutoComplete="matAutocomplete">
+<mat-option *ngFor="let option of companyIataCodeOptions | async" [value]="option.key">{{option.key}}</mat-option>
+</mat-autocomplete>
+</mat-form-field>
+</p>
+
+<p>
+<mat-form-field appearance="outline" floatLabel="always">
+<mat-label>Flight Number</mat-label>
+<input matInput placeholder="Flight Number" formControlName="flightNumber"/>
+</mat-form-field>
+</p>
+
+<p>
+<mat-form-field appearance="outline" floatLabel="always">
+<mat-label>Departure date</mat-label>
+<input matInput [matDatepicker]="departureDateDatePicker" placeholder="yyyy-MM-dd" formControlName="departureDate"/>
+<mat-datepicker-toggle matSuffix [for]="departureDateDatePicker"></mat-datepicker-toggle>
+<mat-datepicker #departureDateDatePicker></mat-datepicker>
+</mat-form-field>
+</p>
+
+<p>
+<mat-form-field appearance="outline" floatLabel="always" class="autocomplete">
+<mat-label>Origin</mat-label>
+<input matInput placeholder="Origin" formControlName="originIataCode" [matAutocomplete]="originIataCodeAutoComplete"/>
+<mat-autocomplete #originIataCodeAutoComplete="matAutocomplete">
+<mat-option *ngFor="let option of originIataCodeOptions | async" [value]="option.key">{{option.key}}</mat-option>
+</mat-autocomplete>
+</mat-form-field>
+</p>
+
+<p>
+<mat-form-field appearance="outline" floatLabel="always">
+<mat-label>Departure time</mat-label>
+<input matInput placeholder="Departure time" formControlName="departureTime"/>
+</mat-form-field>
+</p>
+
+<p>
+<mat-form-field appearance="outline" floatLabel="always" class="autocomplete">
+<mat-label>Destination</mat-label>
+<input matInput placeholder="Destination" formControlName="destinationIataCode" [matAutocomplete]="destinationIataCodeAutoComplete"/>
+<mat-autocomplete #destinationIataCodeAutoComplete="matAutocomplete">
+<mat-option *ngFor="let option of destinationIataCodeOptions | async" [value]="option.key">{{option.key}}</mat-option>
+</mat-autocomplete>
+</mat-form-field>
+</p>
+
+<p>
+<mat-form-field appearance="outline" floatLabel="always">
+<mat-label>Arrival date</mat-label>
+<input matInput [matDatepicker]="arrivalDateDatePicker" placeholder="yyyy-MM-dd" formControlName="arrivalDate"/>
+<mat-datepicker-toggle matSuffix [for]="arrivalDateDatePicker"></mat-datepicker-toggle>
+<mat-datepicker #arrivalDateDatePicker></mat-datepicker>
+</mat-form-field>
+</p>
+
+<p>
+<mat-form-field appearance="outline" floatLabel="always">
+<mat-label>Arrival time</mat-label>
+<input matInput placeholder="Arrival time" formControlName="arrivalTime"/>
+</mat-form-field>
+</p>
+
+<p>
+<button *ngIf="view.canUpdate" mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Update</button>
+</p>
+</form>
+<!-- Specific Code Start -->
+<!-- Specific Code End -->
+</div>

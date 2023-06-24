@@ -1,0 +1,98 @@
+<!-- -->
+<!-- auto generated details component html file -->
+<!-- write modifications between specific code marks -->
+<!-- processed by skeleton generator -->
+<!-- -->
+
+<app-dated-flight-booking-menu  #menu [activePath]="activePath" [id]="id"></app-dated-flight-booking-menu>
+
+<h2>
+Dated Flight booking
+</h2>
+
+<div class="details-form" >
+<form [formGroup]="form" (ngSubmit)="update()">
+<p>
+<mat-form-field appearance="outline" floatLabel="always" class="autocomplete">
+<mat-label>Company</mat-label>
+<input matInput placeholder="Company" formControlName="datedFlightCompanyIataCode" [matAutocomplete]="datedFlightCompanyIataCodeAutoComplete"/>
+<mat-autocomplete #datedFlightCompanyIataCodeAutoComplete="matAutocomplete">
+<mat-option *ngFor="let option of datedFlightCompanyIataCodeOptions | async" [value]="option.key">{{option.key}}</mat-option>
+</mat-autocomplete>
+</mat-form-field>
+</p>
+
+<p>
+<mat-form-field appearance="outline" floatLabel="always">
+<mat-label>Dated Flight(Flight Number)</mat-label>
+<input matInput placeholder="Dated Flight(Flight Number)" formControlName="datedFlightFlightNumber"/>
+</mat-form-field>
+</p>
+
+<p>
+<mat-form-field appearance="outline" floatLabel="always">
+<mat-label>Dated Flight(Departure date)</mat-label>
+<input matInput [matDatepicker]="datedFlightDepartureDateDatePicker" placeholder="yyyy-MM-dd" formControlName="datedFlightDepartureDate"/>
+<mat-datepicker-toggle matSuffix [for]="datedFlightDepartureDateDatePicker"></mat-datepicker-toggle>
+<mat-datepicker #datedFlightDepartureDateDatePicker></mat-datepicker>
+</mat-form-field>
+</p>
+
+<p>
+<mat-form-field appearance="outline" floatLabel="always" class="autocomplete">
+<mat-label>Air waybill</mat-label>
+<input matInput placeholder="Air waybill" formControlName="bookingAirWaybillAirWaybillNumber" [matAutocomplete]="bookingAirWaybillAirWaybillNumberAutoComplete"/>
+<mat-autocomplete #bookingAirWaybillAirWaybillNumberAutoComplete="matAutocomplete">
+<mat-option *ngFor="let option of bookingAirWaybillAirWaybillNumberOptions | async" [value]="option.key">{{option.key}}</mat-option>
+</mat-autocomplete>
+</mat-form-field>
+</p>
+
+<p>
+<mat-form-field appearance="outline" floatLabel="always">
+<mat-label>Number of pieces</mat-label>
+<input type="number" matInput placeholder="Number of pieces" formControlName="numberOfPieces"/>
+</mat-form-field>
+</p>
+
+<p>
+<mat-form-field appearance="outline" floatLabel="always">
+<mat-label>Gross weight</mat-label>
+<input type="number" matInput type="decimal" placeholder="Gross weight" formControlName="grossWeight"/>
+</mat-form-field>
+</p>
+
+<p>
+<mat-form-field appearance="outline" floatLabel="always">
+<mat-label>Gross weight unit of measure</mat-label>
+<mat-select placeholder="Gross weight unit of measure" formControlName="grossWeightUnitOfMeasureCode" >
+<mat-option [value]="null"></mat-option>
+<mat-option *ngFor="let option of grossWeightUnitOfMeasureCodeOptions" [value]="option.key">{{option.key}}</mat-option>
+</mat-select>
+</mat-form-field>
+</p>
+
+<p>
+<mat-form-field appearance="outline" floatLabel="always">
+<mat-label>Gross volume</mat-label>
+<input type="number" matInput type="decimal" placeholder="Gross volume" formControlName="grossVolume"/>
+</mat-form-field>
+</p>
+
+<p>
+<mat-form-field appearance="outline" floatLabel="always">
+<mat-label>Gross volume unit of measure</mat-label>
+<mat-select placeholder="Gross volume unit of measure" formControlName="grossVolumeUnitOfMeasureCode" >
+<mat-option [value]="null"></mat-option>
+<mat-option *ngFor="let option of grossVolumeUnitOfMeasureCodeOptions" [value]="option.key">{{option.key}}</mat-option>
+</mat-select>
+</mat-form-field>
+</p>
+
+<p>
+<button *ngIf="view.canUpdate" mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Update</button>
+</p>
+</form>
+<!-- Specific Code Start -->
+<!-- Specific Code End -->
+</div>

@@ -1,0 +1,95 @@
+<!-- -->
+<!-- auto generated list component html file -->
+<!-- write modifications between specific code marks -->
+<!-- processed by skeleton generator -->
+<!-- -->
+
+<h2>
+Dated Flights: {{scrollView.count}} / {{scrollView.size}}
+</h2>
+
+<form [formGroup]="filter">
+<mat-form-field appearance="outline" floatLabel="always">
+<mat-label>Company</mat-label>
+<input matInput placeholder="Company" formControlName="companyIataCode"/>
+</mat-form-field>
+<mat-form-field appearance="outline" floatLabel="always">
+<mat-label>Flight Number</mat-label>
+<input matInput placeholder="Flight Number" formControlName="flightNumber"/>
+</mat-form-field>
+<mat-form-field appearance="outline" floatLabel="always">
+<mat-label>Departure date Min</mat-label>
+<input matInput [matDatepicker]="departureDateMinValueDatePicker" placeholder="yyyy-MM-dd" formControlName="departureDateMinValue"/>
+<mat-datepicker-toggle matSuffix [for]="departureDateMinValueDatePicker"></mat-datepicker-toggle>
+<mat-datepicker #departureDateMinValueDatePicker></mat-datepicker>
+</mat-form-field>
+<mat-form-field appearance="outline" floatLabel="always">
+<mat-label>Departure date Max</mat-label>
+<input matInput [matDatepicker]="departureDateMaxValueDatePicker" placeholder="yyyy-MM-dd" formControlName="departureDateMaxValue"/>
+<mat-datepicker-toggle matSuffix [for]="departureDateMaxValueDatePicker"></mat-datepicker-toggle>
+<mat-datepicker #departureDateMaxValueDatePicker></mat-datepicker>
+</mat-form-field>
+<mat-form-field appearance="outline" floatLabel="always">
+<mat-label>Origin</mat-label>
+<input matInput placeholder="Origin" formControlName="originIataCode"/>
+</mat-form-field>
+<mat-form-field appearance="outline" floatLabel="always">
+<mat-label>Destination</mat-label>
+<input matInput placeholder="Destination" formControlName="destinationIataCode"/>
+</mat-form-field>
+</form>
+<mat-table [dataSource]="dataSource" matSort>
+<ng-container matColumnDef="companyIataCode">
+<mat-header-cell *matHeaderCellDef mat-sort-header class="table-header">Company</mat-header-cell>
+<mat-cell *matCellDef="let element"> {{element.companyIataCode}} </mat-cell>
+</ng-container>
+<ng-container matColumnDef="flightNumber">
+<mat-header-cell *matHeaderCellDef mat-sort-header class="table-header">Flight Number</mat-header-cell>
+<mat-cell *matCellDef="let element"> {{element.flightNumber}} </mat-cell>
+</ng-container>
+<ng-container matColumnDef="departureDate">
+<mat-header-cell *matHeaderCellDef mat-sort-header class="table-header">Departure date</mat-header-cell>
+<mat-cell *matCellDef="let element"> {{element.departureDate}} </mat-cell>
+</ng-container>
+<ng-container matColumnDef="originIataCode">
+<mat-header-cell *matHeaderCellDef mat-sort-header class="table-header">Origin</mat-header-cell>
+<mat-cell *matCellDef="let element"> {{element.originIataCode}} </mat-cell>
+</ng-container>
+<ng-container matColumnDef="departureTime">
+<mat-header-cell *matHeaderCellDef mat-sort-header class="table-header">Departure time</mat-header-cell>
+<mat-cell *matCellDef="let element"> {{element.departureTime}} </mat-cell>
+</ng-container>
+<ng-container matColumnDef="destinationIataCode">
+<mat-header-cell *matHeaderCellDef mat-sort-header class="table-header">Destination</mat-header-cell>
+<mat-cell *matCellDef="let element"> {{element.destinationIataCode}} </mat-cell>
+</ng-container>
+<ng-container matColumnDef="arrivalDate">
+<mat-header-cell *matHeaderCellDef mat-sort-header class="table-header">Arrival date</mat-header-cell>
+<mat-cell *matCellDef="let element"> {{element.arrivalDate}} </mat-cell>
+</ng-container>
+<ng-container matColumnDef="arrivalTime">
+<mat-header-cell *matHeaderCellDef mat-sort-header class="table-header">Arrival time</mat-header-cell>
+<mat-cell *matCellDef="let element"> {{element.arrivalTime}} </mat-cell>
+</ng-container>
+<ng-container matColumnDef="Actions">
+<mat-header-cell *matHeaderCellDef class="table-header">Actions</mat-header-cell>
+<mat-cell *matCellDef="let element">
+<a class="margin-10" href="{{'/dated-flight/' + element.id}}"><mat-icon aria-label="Edit" svgIcon="table-edit" class="text-success"></mat-icon></a>
+<a class="margin-10" (click)="edit(element.id)"><mat-icon aria-label="Edit" svgIcon="pencil" class="text-success"></mat-icon></a>
+<a *ngIf="element.canDelete" class="margin-10" (click)="delete(element.id)"><mat-icon aria-label="Delete" svgIcon="delete" class="text-warn"></mat-icon></a>
+</mat-cell>
+</ng-container>
+<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+<mat-paginator #paginator [length]="scrollView.count"
+[pageSize]="scrollForm.elementsPerPage"
+[showFirstLastButtons]="true"
+[pageSizeOptions]="pageSizeOptions">
+</mat-paginator>
+
+<button mat-raised-button (click)="create()" color="primary">
+Create
+</button>
+<!-- Specific Code Start -->
+<!-- Specific Code End -->

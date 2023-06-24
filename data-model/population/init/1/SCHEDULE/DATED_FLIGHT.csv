@@ -1,0 +1,3 @@
+Company;Flight Number;Departure date;Origin;Departure time;Destination;Arrival date;Arrival time
+AF;083;2023-06-26;SFO;1455;CDG;2023-06-27;1045
+AF;083;2023-06-27;SFO;1455;CDG;2023-06-28;1045

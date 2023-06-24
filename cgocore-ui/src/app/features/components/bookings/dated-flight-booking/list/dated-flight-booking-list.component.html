@@ -1,0 +1,94 @@
+<!-- -->
+<!-- auto generated list component html file -->
+<!-- write modifications between specific code marks -->
+<!-- processed by skeleton generator -->
+<!-- -->
+
+<h2>
+Dated Flight bookings: {{scrollView.count}} / {{scrollView.size}}
+</h2>
+
+<form [formGroup]="filter">
+<mat-form-field appearance="outline" floatLabel="always">
+<mat-label>Company</mat-label>
+<input matInput placeholder="Company" formControlName="datedFlightCompanyIataCode"/>
+</mat-form-field>
+<mat-form-field appearance="outline" floatLabel="always">
+<mat-label>Dated Flight(Flight Number)</mat-label>
+<input matInput placeholder="Dated Flight(Flight Number)" formControlName="datedFlightFlightNumber"/>
+</mat-form-field>
+<mat-form-field appearance="outline" floatLabel="always">
+<mat-label>Dated Flight(Departure date) Min</mat-label>
+<input matInput [matDatepicker]="datedFlightDepartureDateMinValueDatePicker" placeholder="yyyy-MM-dd" formControlName="datedFlightDepartureDateMinValue"/>
+<mat-datepicker-toggle matSuffix [for]="datedFlightDepartureDateMinValueDatePicker"></mat-datepicker-toggle>
+<mat-datepicker #datedFlightDepartureDateMinValueDatePicker></mat-datepicker>
+</mat-form-field>
+<mat-form-field appearance="outline" floatLabel="always">
+<mat-label>Dated Flight(Departure date) Max</mat-label>
+<input matInput [matDatepicker]="datedFlightDepartureDateMaxValueDatePicker" placeholder="yyyy-MM-dd" formControlName="datedFlightDepartureDateMaxValue"/>
+<mat-datepicker-toggle matSuffix [for]="datedFlightDepartureDateMaxValueDatePicker"></mat-datepicker-toggle>
+<mat-datepicker #datedFlightDepartureDateMaxValueDatePicker></mat-datepicker>
+</mat-form-field>
+<mat-form-field appearance="outline" floatLabel="always">
+<mat-label>Air waybill</mat-label>
+<input matInput placeholder="Air waybill" formControlName="bookingAirWaybillAirWaybillNumber"/>
+</mat-form-field>
+</form>
+<mat-table [dataSource]="dataSource" matSort>
+<ng-container matColumnDef="datedFlightCompanyIataCode">
+<mat-header-cell *matHeaderCellDef mat-sort-header class="table-header">Company</mat-header-cell>
+<mat-cell *matCellDef="let element"> {{element.datedFlightCompanyIataCode}} </mat-cell>
+</ng-container>
+<ng-container matColumnDef="datedFlightFlightNumber">
+<mat-header-cell *matHeaderCellDef mat-sort-header class="table-header">Dated Flight(Flight Number)</mat-header-cell>
+<mat-cell *matCellDef="let element"> {{element.datedFlightFlightNumber}} </mat-cell>
+</ng-container>
+<ng-container matColumnDef="datedFlightDepartureDate">
+<mat-header-cell *matHeaderCellDef mat-sort-header class="table-header">Dated Flight(Departure date)</mat-header-cell>
+<mat-cell *matCellDef="let element"> {{element.datedFlightDepartureDate}} </mat-cell>
+</ng-container>
+<ng-container matColumnDef="bookingAirWaybillAirWaybillNumber">
+<mat-header-cell *matHeaderCellDef mat-sort-header class="table-header">Air waybill</mat-header-cell>
+<mat-cell *matCellDef="let element"> {{element.bookingAirWaybillAirWaybillNumber}} </mat-cell>
+</ng-container>
+<ng-container matColumnDef="numberOfPieces">
+<mat-header-cell *matHeaderCellDef mat-sort-header class="table-header">Number of pieces</mat-header-cell>
+<mat-cell *matCellDef="let element"> {{element.numberOfPieces}} </mat-cell>
+</ng-container>
+<ng-container matColumnDef="grossWeight">
+<mat-header-cell *matHeaderCellDef mat-sort-header class="table-header">Gross weight</mat-header-cell>
+<mat-cell *matCellDef="let element"> {{element.grossWeight}} </mat-cell>
+</ng-container>
+<ng-container matColumnDef="grossWeightUnitOfMeasureCode">
+<mat-header-cell *matHeaderCellDef mat-sort-header class="table-header">Gross weight unit of measure</mat-header-cell>
+<mat-cell *matCellDef="let element"> {{element.grossWeightUnitOfMeasureCode}} </mat-cell>
+</ng-container>
+<ng-container matColumnDef="grossVolume">
+<mat-header-cell *matHeaderCellDef mat-sort-header class="table-header">Gross volume</mat-header-cell>
+<mat-cell *matCellDef="let element"> {{element.grossVolume}} </mat-cell>
+</ng-container>
+<ng-container matColumnDef="grossVolumeUnitOfMeasureCode">
+<mat-header-cell *matHeaderCellDef mat-sort-header class="table-header">Gross volume unit of measure</mat-header-cell>
+<mat-cell *matCellDef="let element"> {{element.grossVolumeUnitOfMeasureCode}} </mat-cell>
+</ng-container>
+<ng-container matColumnDef="Actions">
+<mat-header-cell *matHeaderCellDef class="table-header">Actions</mat-header-cell>
+<mat-cell *matCellDef="let element">
+<a class="margin-10" (click)="edit(element.id)"><mat-icon aria-label="Edit" svgIcon="pencil" class="text-success"></mat-icon></a>
+<a *ngIf="element.canDelete" class="margin-10" (click)="delete(element.id)"><mat-icon aria-label="Delete" svgIcon="delete" class="text-warn"></mat-icon></a>
+</mat-cell>
+</ng-container>
+<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+<mat-paginator #paginator [length]="scrollView.count"
+[pageSize]="scrollForm.elementsPerPage"
+[showFirstLastButtons]="true"
+[pageSizeOptions]="pageSizeOptions">
+</mat-paginator>
+
+<button mat-raised-button (click)="create()" color="primary">
+Create
+</button>
+<!-- Specific Code Start -->
+<!-- Specific Code End -->

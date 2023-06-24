@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<metadata:project xmlns:metadata="http://generator.sklsft.org/schema/model/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://generator.sklsft.org/schema/model/metadata skeleton-metadata-4.0.xsd">
+    <domainName>com.afklm.cargo</domainName>
+    <projectName>cgocore</projectName>
+    <skeleton>SPRING_HIBERNATE_ANGULAR</skeleton>
+    <databaseEngine>POSTGRESQL</databaseEngine>
+    <audited>false</audited>
+    <packages>
+		<package name="REFERENCE">
+			<packages>
+				<package name="LOCALIZATION">
+					<tables>
+						<table name="CURRENCY" cardinality="1"
+							listRendering="Currencies" detailRendering="Currency"
+							createEnabled="true" updateEnabled="true" deleteEnabled="true"
+							idType="INTEGER">
+							<selectionBehavior
+								selectionMode="AUTO_COMPLETE" />
+							<columns>
+								<column name="ISO_CODE" dataType="STRING"
+									nullable="false" editable="true" rendering="ISO Code">
+								</column>
+								<column name="LABEL" dataType="STRING" nullable="false"
+									editable="true" rendering="Label">
+								</column>
+							</columns>
+						</table>
+						<table name="COUNTRY" cardinality="1"
+							listRendering="Countries" detailRendering="Country"
+							createEnabled="true" updateEnabled="true" deleteEnabled="true"
+							idType="INTEGER">
+							<selectionBehavior
+								selectionMode="AUTO_COMPLETE" />
+							<columns>
+								<column name="IATA_CODE" dataType="STRING"
+									nullable="false" editable="true" rendering="IATA Code">
+								</column>
+								<column name="LABEL" dataType="STRING" nullable="false"
+									editable="true" rendering="Label">
+								</column>
+							</columns>
+						</table>
+						<table name="STATION" cardinality="1"
+							listRendering="Stations" detailRendering="Station"
+							createEnabled="false" updateEnabled="true" deleteEnabled="false"
+							idType="INTEGER">
+							<selectionBehavior
+								selectionMode="AUTO_COMPLETE" />
+							<columns>
+								<column name="IATA_CODE" dataType="STRING"
+									nullable="false" editable="false" rendering="IATA Code">
+								</column>
+								<column name="LABEL" dataType="STRING" nullable="false"
+									editable="false" rendering="Label">
+								</column>
+								<column name="COUNTRY_ID" dataType="INTEGER" nullable="true"
+									referenceTableName="COUNTRY" referenceTableRelation="MANY_TO_ONE"
+									editable="false" rendering="Country">
+								</column>
+							</columns>
+						</table>
+					</tables>
+				</package>
+				<package name="AIRLINES">
+					<tables>
+						<table name="AIRLINE_COMPANY" cardinality="1"
+							listRendering="Airline companies"
+							detailRendering="Airline company" createEnabled="false"
+							updateEnabled="true" deleteEnabled="false" idType="INTEGER">
+							<selectionBehavior
+								selectionMode="AUTO_COMPLETE" />
+							<columns>
+								<column name="IATA_CODE" dataType="STRING"
+									nullable="false" editable="false" rendering="IATA Code">
+								</column>
+								<column name="LABEL" dataType="STRING" nullable="true"
+									editable="false" rendering="Label">
+								</column>
+								<column name="PREFIX" dataType="STRING" nullable="true"
+									editable="false" rendering="Prefix">
+								</column>
+							</columns>
+						</table>
+					</tables>
+				</package>
+				<package name="COMMODITIES">
+					<tables>
+						<table name="METRIC" cardinality="1" listRendering="Metrics"
+							detailRendering="Metric" createEnabled="true" updateEnabled="true"
+							deleteEnabled="true" idType="INTEGER">
+							<selectionBehavior selectionMode="DROPDOWN_OPTIONS" />
+							<columns>
+								<column name="CODE" dataType="STRING" nullable="false"
+									editable="true" rendering="Code">
+								</column>
+								<column name="LABEL" dataType="STRING" nullable="true"
+									editable="true" rendering="Label">
+								</column>
+							</columns>
+						</table>
+						<table name="UNIT_OF_MEASURE" cardinality="1" listRendering="Units of measure"
+							detailRendering="Unit of measure" createEnabled="true"
+							updateEnabled="true" deleteEnabled="true" idType="INTEGER">
+							<selectionBehavior selectionMode="DROPDOWN_OPTIONS" />
+							<columns>
+								<column name="CODE" dataType="STRING" nullable="false"
+									editable="true" rendering="Code">
+								</column>
+								<column name="LABEL" dataType="STRING" nullable="true"
+									editable="true" rendering="Label">
+								</column>
+								<column name="METRIC_ID" dataType="INTEGER" nullable="false"
+									referenceTableName="METRIC" editable="true" rendering="Metric">
+								</column>
+							</columns>
+						</table>
+						<table name="SPECIAL_HANDLING_CODE" cardinality="1"
+							listRendering="Special handling codes" detailRendering="Special handling code"
+							createEnabled="true" updateEnabled="true" deleteEnabled="true" idType="INTEGER">
+							<selectionBehavior selectionMode="DROPDOWN_OPTIONS" />
+							<columns>
+								<column name="CODE" dataType="STRING" nullable="false"
+									editable="true" rendering="Code">
+								</column>
+								<column name="LABEL" dataType="STRING" nullable="true"
+									editable="true" rendering="Label">
+								</column>
+							</columns>
+						</table>
+					</tables>
+				</package>
+				<package name="CONTAINERS">
+					<tables>
+						<table name="ULD_TYPE" cardinality="1" listRendering="ULD Types"
+							detailRendering="ULD Type" createEnabled="true" updateEnabled="true"
+							deleteEnabled="true" idType="INTEGER">
+							<selectionBehavior selectionMode="DROPDOWN_OPTIONS" />
+							<columns>
+								<column name="CODE" dataType="STRING" nullable="false"
+									editable="true" rendering="Code">
+								</column>
+								<column name="LABEL" dataType="STRING" nullable="true"
+									editable="true" rendering="Label">
+								</column>
+							</columns>
+						</table>
+					</tables>
+				</package>
+			</packages>
+		</package>
+		<package name="SCHEDULE">
+			<tables>
+				<table name="DATED_FLIGHT" cardinality="3"
+					listRendering="Dated Flights" detailRendering="Dated Flight"
+					createEnabled="true" updateEnabled="true" deleteEnabled="true"
+					idType="INTEGER">
+					<columns>
+						<column name="COMPANY_ID" dataType="INTEGER"
+							nullable="false" referenceTableName="AIRLINE_COMPANY"
+							editable="true" rendering="Company">
+						</column>
+						<column name="FLIGHT_NUMBER" dataType="STRING"
+							nullable="false" editable="true"
+							rendering="Flight Number">
+						</column>
+						<column name="DEPARTURE_DATE" dataType="DATE"
+							nullable="false" editable="true" rendering="Departure date">
+						</column>
+						<column name="ORIGIN_ID" dataType="INTEGER" nullable="true"
+							referenceTableName="STATION" editable="true" rendering="Origin">
+						</column>
+						<column name="DEPARTURE_TIME" dataType="STRING"
+							nullable="true" editable="true" rendering="Departure time" filterable="false">
+						</column>
+						<column name="DESTINATION_ID" dataType="INTEGER"
+							nullable="true" referenceTableName="STATION" editable="true"
+							rendering="Destination">
+						</column>
+						<column name="ARRIVAL_DATE" dataType="DATE" nullable="true"
+							editable="true" rendering="Arrival date" filterable="false">
+						</column>
+						<column name="ARRIVAL_TIME" dataType="STRING"
+							nullable="true" editable="true" rendering="Arrival time" filterable="false">
+						</column>
+					</columns>
+				</table>
+			</tables>
+		</package>
+		<package name="SHIPMENTS">
+			<tables>
+				<table name="AIR_WAYBILL" cardinality="1" listRendering="Air waybills"
+					detailRendering="Air waybill" createEnabled="true" updateEnabled="true"
+					deleteEnabled="true">
+					<selectionBehavior selectionMode="AUTO_COMPLETE" />
+					<columns>
+						<column name="AIR_WAYBILL_NUMBER" dataType="STRING"
+							nullable="false" editable="true" rendering="Air waybill number">
+						</column>
+						<column name="FORWARDER_NAME" dataType="STRING"
+							nullable="true" editable="true" rendering="Forwarder name">
+						</column>
+						<column name="ORIGIN_ID" dataType="INTEGER" nullable="true"
+							referenceTableName="STATION" editable="true" rendering="Origin">
+						</column>
+						<column name="DESTINATION_ID" dataType="INTEGER" nullable="true"
+							referenceTableName="STATION" editable="true" rendering="Destination">
+						</column>
+						<column name="GODDS_DESCRIPTION" dataType="STRING"
+							nullable="true" editable="true" rendering="Goods description">
+						</column>
+						<column name="HS_CODE" dataType="STRING"
+							nullable="true" editable="true" rendering="HS Code">
+						</column>
+						<column name="NUMBER_OF_PIECES" dataType="INTEGER" nullable="true"
+							editable="true" rendering="Number of pieces" filterable="false">
+						</column>
+						<column name="GROSS_WEIGHT" dataType="BIG_DECIMAL"
+							nullable="true" editable="true" rendering="Gross weight" filterable="false">
+						</column>
+						<column name="CHARGEABLE_WEIGHT" dataType="BIG_DECIMAL"
+							nullable="true" editable="true" rendering="Chargeable weight" filterable="false">
+						</column>
+						<column name="GROSS_WEIGHT_UNIT_OF_MEASURE_ID" dataType="INTEGER"
+							nullable="true" referenceTableName="UNIT_OF_MEASURE" editable="true"
+							rendering="Gross weight unit of measure" filterable="false">
+						</column>
+						<column name="GROSS_VOLUME" dataType="BIG_DECIMAL"
+							nullable="true" editable="true" rendering="Gross volume" filterable="false">
+						</column>
+						<column name="GROSS_VOLUME_UNIT_OF_MEASURE_ID" dataType="INTEGER"
+							nullable="true" referenceTableName="UNIT_OF_MEASURE" editable="true"
+							rendering="Gross volume unit of measure" filterable="false">
+						</column>
+					</columns>
+				</table>
+			</tables>
+		</package>
+		<package name="BOOKINGS">
+			<tables>
+				<table name="BOOKING" cardinality="1" listRendering="Bookings"
+					detailRendering="Booking" createEnabled="true" updateEnabled="true"
+					deleteEnabled="true">
+					<columns>
+						<column name="AIR_WAYBILL_ID" dataType="INTEGER"
+							nullable="false" referenceTableName="AIR_WAYBILL"
+							editable="true" rendering="Air waybill">
+						</column>
+						<column name="ORIGIN_ID" dataType="INTEGER" nullable="true"
+							referenceTableName="STATION" editable="true" rendering="Origin">
+						</column>
+						<column name="DESTINATION_ID" dataType="INTEGER" nullable="true"
+							referenceTableName="STATION" editable="true" rendering="Destination">
+						</column>
+						<column name="NUMBER_OF_PIECES" dataType="INTEGER" nullable="true"
+							editable="true" rendering="Number of pieces" filterable="false">
+						</column>
+						<column name="GROSS_WEIGHT" dataType="BIG_DECIMAL"
+							nullable="true" editable="true" rendering="Gross weight" filterable="false">
+						</column>
+						<column name="GROSS_WEIGHT_UNIT_OF_MEASURE_ID" dataType="INTEGER"
+							nullable="true" referenceTableName="UNIT_OF_MEASURE" editable="true"
+							rendering="Gross weight unit of measure" filterable="false">
+						</column>
+						<column name="GROSS_VOLUME" dataType="BIG_DECIMAL"
+							nullable="true" editable="true" rendering="Gross volume" filterable="false">
+						</column>
+						<column name="GROSS_VOLUME_UNIT_OF_MEASURE_ID" dataType="INTEGER"
+							nullable="true" referenceTableName="UNIT_OF_MEASURE" editable="true"
+							rendering="Gross volume unit of measure" filterable="false">
+						</column>
+					</columns>
+				</table>
+				<table name="DATED_FLIGHT_BOOKING" cardinality="2"
+					listRendering="Dated Flight bookings"
+					detailRendering="Dated Flight booking" createEnabled="true"
+					updateEnabled="true" deleteEnabled="true" idType="INTEGER">
+					<columns>
+						<column name="DATED_FLIGHT_ID" dataType="INTEGER"
+							nullable="false" referenceTableName="DATED_FLIGHT"
+							referenceTableRelation="MANY_TO_ONE" editable="true"
+							rendering="Dated Flight">
+						</column>
+						<column name="BOOKING_ID" dataType="INTEGER"
+							nullable="false" referenceTableName="BOOKING"
+							editable="true" rendering="Booking" referenceTableRelation="MANY_TO_ONE">
+						</column>
+						<column name="NUMBER_OF_PIECES" dataType="INTEGER" nullable="true"
+							editable="true" rendering="Number of pieces" filterable="false">
+						</column>
+						<column name="GROSS_WEIGHT" dataType="BIG_DECIMAL"
+							nullable="true" editable="true" rendering="Gross weight" filterable="false">
+						</column>
+						<column name="GROSS_WEIGHT_UNIT_OF_MEASURE_ID" dataType="INTEGER"
+							nullable="true" referenceTableName="UNIT_OF_MEASURE" editable="true"
+							rendering="Gross weight unit of measure" filterable="false">
+						</column>
+						<column name="GROSS_VOLUME" dataType="BIG_DECIMAL"
+							nullable="true" editable="true" rendering="Gross volume" filterable="false">
+						</column>
+						<column name="GROSS_VOLUME_UNIT_OF_MEASURE_ID" dataType="INTEGER"
+							nullable="true" referenceTableName="UNIT_OF_MEASURE" editable="true"
+							rendering="Gross volume unit of measure" filterable="false">
+						</column>
+					</columns>
+				</table>
+			</tables>
+		</package>
+		<package name="LOADING">
+			<tables>
+				<table name="DATED_FLIGHT_ULD" cardinality="4"
+					listRendering="Dated Flight ULDs"
+					detailRendering="Dated Flight ULD" createEnabled="true"
+					updateEnabled="true" deleteEnabled="true" idType="INTEGER">
+					<columns>
+						<column name="DATED_FLIGHT_ID" dataType="INTEGER"
+							nullable="false" referenceTableName="DATED_FLIGHT"
+							referenceTableRelation="MANY_TO_ONE" editable="true"
+							rendering="Dated Flight leg">
+						</column>
+						<column name="ULD_TYPE_ID" dataType="INTEGER"
+							nullable="false" referenceTableName="ULD_TYPE"
+							editable="true" rendering="ULD Type">
+						</column>
+						<column name="ULD_CODE" dataType="STRING"
+							nullable="false"
+							editable="true" rendering="ULD code">
+						</column>
+						<column name="ULD_OWNER_CODE" dataType="STRING"
+							nullable="false"
+							editable="true" rendering="ULD Owner code">
+						</column>
+						<column name="GROSS_WEIGHT" dataType="BIG_DECIMAL"
+							nullable="true" editable="true" rendering="Gross weight" filterable="false">
+						</column>
+						<column name="GROSS_WEIGHT_UNIT_OF_MEASURE_ID" dataType="INTEGER"
+							nullable="true" referenceTableName="UNIT_OF_MEASURE" editable="true"
+							rendering="Gross weight unit of measure" filterable="false">
+						</column>
+					</columns>
+				</table>
+				<table name="DATED_FLIGHT_ULD_AWB" cardinality="4"
+					listRendering="Dated Flight ULD AWBs"
+					detailRendering="Dated Flight ULD AWB" createEnabled="true"
+					updateEnabled="true" deleteEnabled="true" idType="INTEGER">
+					<columns>
+						<column name="DATED_FLIGHT_ULD_ID" dataType="INTEGER"
+							nullable="false" referenceTableName="DATED_FLIGHT_ULD"
+							referenceTableRelation="MANY_TO_ONE" editable="true"
+							rendering="Dated Flight ULD">
+						</column>
+						<column name="AIR_WAYBILL_ID" dataType="INTEGER"
+							nullable="false" referenceTableName="AIR_WAYBILL"
+							editable="true" rendering="Air waybill">
+						</column>
+						<column name="NUMBER_OF_PIECES" dataType="INTEGER" nullable="true"
+							editable="true" rendering="Number of pieces" filterable="false">
+						</column>
+						<column name="GROSS_WEIGHT" dataType="BIG_DECIMAL"
+							nullable="true" editable="true" rendering="Gross weight" filterable="false">
+						</column>
+						<column name="GROSS_WEIGHT_UNIT_OF_MEASURE_ID" dataType="INTEGER"
+							nullable="true" referenceTableName="UNIT_OF_MEASURE" editable="true"
+							rendering="Gross weight unit of measure" filterable="false">
+						</column>
+						<column name="GROSS_VOLUME" dataType="BIG_DECIMAL"
+							nullable="true" editable="true" rendering="Gross volume" filterable="false">
+						</column>
+						<column name="GROSS_VOLUME_UNIT_OF_MEASURE_ID" dataType="INTEGER"
+							nullable="true" referenceTableName="UNIT_OF_MEASURE" editable="true"
+							rendering="Gross volume unit of measure" filterable="false">
+						</column>
+					</columns>
+				</table>
+			</tables>
+		</package>
+	</packages>
+</metadata:project>

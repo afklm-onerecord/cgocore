@@ -1,0 +1,96 @@
+<!-- -->
+<!-- auto generated modal component html file -->
+<!-- write modifications between specific code marks -->
+<!-- processed by skeleton generator -->
+<!-- -->
+
+<div class="modal-form" >
+<form [formGroup]="form" (ngSubmit)="saveOrUpdate()">
+<mat-dialog-content class="text-grey-darker">
+<div>
+<button mat-icon-button mat-dialog-close disableRipple>
+<mat-icon class="text-grey" svgIcon="close"></mat-icon>
+</button>
+</div>
+<section>
+<p>
+<mat-form-field appearance="outline" floatLabel="always" class="autocomplete">
+<mat-label>Air waybill</mat-label>
+<input matInput placeholder="Air waybill" formControlName="airWaybillAirWaybillNumber" [matAutocomplete]="airWaybillAirWaybillNumberAutoComplete"/>
+<mat-autocomplete #airWaybillAirWaybillNumberAutoComplete="matAutocomplete">
+<mat-option *ngFor="let option of airWaybillAirWaybillNumberOptions | async" [value]="option.key">{{option.key}}</mat-option>
+</mat-autocomplete>
+</mat-form-field>
+</p>
+
+<p>
+<mat-form-field appearance="outline" floatLabel="always" class="autocomplete">
+<mat-label>Origin</mat-label>
+<input matInput placeholder="Origin" formControlName="originIataCode" [matAutocomplete]="originIataCodeAutoComplete"/>
+<mat-autocomplete #originIataCodeAutoComplete="matAutocomplete">
+<mat-option *ngFor="let option of originIataCodeOptions | async" [value]="option.key">{{option.key}}</mat-option>
+</mat-autocomplete>
+</mat-form-field>
+</p>
+
+<p>
+<mat-form-field appearance="outline" floatLabel="always" class="autocomplete">
+<mat-label>Destination</mat-label>
+<input matInput placeholder="Destination" formControlName="destinationIataCode" [matAutocomplete]="destinationIataCodeAutoComplete"/>
+<mat-autocomplete #destinationIataCodeAutoComplete="matAutocomplete">
+<mat-option *ngFor="let option of destinationIataCodeOptions | async" [value]="option.key">{{option.key}}</mat-option>
+</mat-autocomplete>
+</mat-form-field>
+</p>
+
+<p>
+<mat-form-field appearance="outline" floatLabel="always">
+<mat-label>Number of pieces</mat-label>
+<input type="number" matInput placeholder="Number of pieces" formControlName="numberOfPieces"/>
+</mat-form-field>
+</p>
+
+<p>
+<mat-form-field appearance="outline" floatLabel="always">
+<mat-label>Gross weight</mat-label>
+<input type="number" matInput type="decimal" placeholder="Gross weight" formControlName="grossWeight"/>
+</mat-form-field>
+</p>
+
+<p>
+<mat-form-field appearance="outline" floatLabel="always">
+<mat-label>Gross weight unit of measure</mat-label>
+<mat-select placeholder="Gross weight unit of measure" formControlName="grossWeightUnitOfMeasureCode" >
+<mat-option [value]="null"></mat-option>
+<mat-option *ngFor="let option of grossWeightUnitOfMeasureCodeOptions" [value]="option.key">{{option.key}}</mat-option>
+</mat-select>
+</mat-form-field>
+</p>
+
+<p>
+<mat-form-field appearance="outline" floatLabel="always">
+<mat-label>Gross volume</mat-label>
+<input type="number" matInput type="decimal" placeholder="Gross volume" formControlName="grossVolume"/>
+</mat-form-field>
+</p>
+
+<p>
+<mat-form-field appearance="outline" floatLabel="always">
+<mat-label>Gross volume unit of measure</mat-label>
+<mat-select placeholder="Gross volume unit of measure" formControlName="grossVolumeUnitOfMeasureCode" >
+<mat-option [value]="null"></mat-option>
+<mat-option *ngFor="let option of grossVolumeUnitOfMeasureCodeOptions" [value]="option.key">{{option.key}}</mat-option>
+</mat-select>
+</mat-form-field>
+</p>
+
+</section>
+</mat-dialog-content>
+<mat-dialog-actions>
+<button mat-raised-button *ngIf="view.id == null" color="primary" type="submit" [disabled]="form.invalid">Save</button>
+<button mat-raised-button *ngIf="view.id != null && view.canUpdate" color="primary" type="submit" [disabled]="form.invalid">Update</button>
+</mat-dialog-actions>
+</form>
+<!-- Specific Code Start -->
+<!-- Specific Code End -->
+</div>

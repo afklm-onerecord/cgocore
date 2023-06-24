@@ -1,0 +1,79 @@
+<!-- -->
+<!-- auto generated list component html file -->
+<!-- write modifications between specific code marks -->
+<!-- processed by skeleton generator -->
+<!-- -->
+
+<h2>
+Bookings: {{scrollView.count}} / {{scrollView.size}}
+</h2>
+
+<form [formGroup]="filter">
+<mat-form-field appearance="outline" floatLabel="always">
+<mat-label>Air waybill</mat-label>
+<input matInput placeholder="Air waybill" formControlName="airWaybillAirWaybillNumber"/>
+</mat-form-field>
+<mat-form-field appearance="outline" floatLabel="always">
+<mat-label>Origin</mat-label>
+<input matInput placeholder="Origin" formControlName="originIataCode"/>
+</mat-form-field>
+<mat-form-field appearance="outline" floatLabel="always">
+<mat-label>Destination</mat-label>
+<input matInput placeholder="Destination" formControlName="destinationIataCode"/>
+</mat-form-field>
+</form>
+<mat-table [dataSource]="dataSource" matSort>
+<ng-container matColumnDef="airWaybillAirWaybillNumber">
+<mat-header-cell *matHeaderCellDef mat-sort-header class="table-header">Air waybill</mat-header-cell>
+<mat-cell *matCellDef="let element"> {{element.airWaybillAirWaybillNumber}} </mat-cell>
+</ng-container>
+<ng-container matColumnDef="originIataCode">
+<mat-header-cell *matHeaderCellDef mat-sort-header class="table-header">Origin</mat-header-cell>
+<mat-cell *matCellDef="let element"> {{element.originIataCode}} </mat-cell>
+</ng-container>
+<ng-container matColumnDef="destinationIataCode">
+<mat-header-cell *matHeaderCellDef mat-sort-header class="table-header">Destination</mat-header-cell>
+<mat-cell *matCellDef="let element"> {{element.destinationIataCode}} </mat-cell>
+</ng-container>
+<ng-container matColumnDef="numberOfPieces">
+<mat-header-cell *matHeaderCellDef mat-sort-header class="table-header">Number of pieces</mat-header-cell>
+<mat-cell *matCellDef="let element"> {{element.numberOfPieces}} </mat-cell>
+</ng-container>
+<ng-container matColumnDef="grossWeight">
+<mat-header-cell *matHeaderCellDef mat-sort-header class="table-header">Gross weight</mat-header-cell>
+<mat-cell *matCellDef="let element"> {{element.grossWeight}} </mat-cell>
+</ng-container>
+<ng-container matColumnDef="grossWeightUnitOfMeasureCode">
+<mat-header-cell *matHeaderCellDef mat-sort-header class="table-header">Gross weight unit of measure</mat-header-cell>
+<mat-cell *matCellDef="let element"> {{element.grossWeightUnitOfMeasureCode}} </mat-cell>
+</ng-container>
+<ng-container matColumnDef="grossVolume">
+<mat-header-cell *matHeaderCellDef mat-sort-header class="table-header">Gross volume</mat-header-cell>
+<mat-cell *matCellDef="let element"> {{element.grossVolume}} </mat-cell>
+</ng-container>
+<ng-container matColumnDef="grossVolumeUnitOfMeasureCode">
+<mat-header-cell *matHeaderCellDef mat-sort-header class="table-header">Gross volume unit of measure</mat-header-cell>
+<mat-cell *matCellDef="let element"> {{element.grossVolumeUnitOfMeasureCode}} </mat-cell>
+</ng-container>
+<ng-container matColumnDef="Actions">
+<mat-header-cell *matHeaderCellDef class="table-header">Actions</mat-header-cell>
+<mat-cell *matCellDef="let element">
+<a class="margin-10" href="{{'/booking/' + element.id}}"><mat-icon aria-label="Edit" svgIcon="table-edit" class="text-success"></mat-icon></a>
+<a class="margin-10" (click)="edit(element.id)"><mat-icon aria-label="Edit" svgIcon="pencil" class="text-success"></mat-icon></a>
+<a *ngIf="element.canDelete" class="margin-10" (click)="delete(element.id)"><mat-icon aria-label="Delete" svgIcon="delete" class="text-warn"></mat-icon></a>
+</mat-cell>
+</ng-container>
+<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+<mat-paginator #paginator [length]="scrollView.count"
+[pageSize]="scrollForm.elementsPerPage"
+[showFirstLastButtons]="true"
+[pageSizeOptions]="pageSizeOptions">
+</mat-paginator>
+
+<button mat-raised-button (click)="create()" color="primary">
+Create
+</button>
+<!-- Specific Code Start -->
+<!-- Specific Code End -->

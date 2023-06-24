@@ -1,0 +1,11 @@
+"Code";"Label";"Alternative code";"Metric"
+KGM;Kilogram;Weight
+LBR;Pound;Weight
+CMT;Centimeter;Dimension
+MTR;Meter;Dimension
+FOT;Foot;Dimension
+INH;Inch;Dimension
+CMQ;Cubic Centimeter;Volume
+MTQ;Cubic Meter;Volume
+FTQ;Cubic Foot;Volume
+INQ;Cubic Inch;Volume
