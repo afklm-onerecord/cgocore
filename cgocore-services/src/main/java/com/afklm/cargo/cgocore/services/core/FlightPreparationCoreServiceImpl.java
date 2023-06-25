@@ -10,13 +10,9 @@ import com.afklm.cargo.cgocore.api.model.core.UldOnFlightCoreForm;
 import com.afklm.cargo.cgocore.api.model.core.validation.ValidationReport;
 import com.afklm.cargo.cgocore.components.mapper.core.UldOnFlightCoreMapper;
 import com.afklm.cargo.cgocore.components.processor.loading.DatedFlightUldProcessor;
-import com.afklm.cargo.cgocore.components.processor.shipments.AirWaybillProcessor;
-import com.afklm.cargo.cgocore.components.validation.AirWaybillCoreFormValidator;
 import com.afklm.cargo.cgocore.components.validation.UldOnFlightCoreFormValidator;
 import com.afklm.cargo.cgocore.model.loading.DatedFlightUld;
-import com.afklm.cargo.cgocore.model.schedule.DatedFlight;
 import com.afklm.cargo.cgocore.persistence.interfaces.loading.DatedFlightUldDao;
-import com.afklm.cargo.cgocore.persistence.interfaces.schedule.DatedFlightDao;
 
 @Service
 public class FlightPreparationCoreServiceImpl implements FlightPreparationCoreService {

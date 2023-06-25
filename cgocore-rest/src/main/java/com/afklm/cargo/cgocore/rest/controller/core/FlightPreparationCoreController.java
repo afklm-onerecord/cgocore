@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.afklm.cargo.cgocore.api.interfaces.core.AirWaybillCoreService;
 import com.afklm.cargo.cgocore.api.interfaces.core.FlightPreparationCoreService;
-import com.afklm.cargo.cgocore.api.model.core.AirWaybillCoreForm;
 import com.afklm.cargo.cgocore.api.model.core.UldOnFlightCoreForm;
 import com.afklm.cargo.cgocore.api.model.core.validation.ValidationReport;
 
